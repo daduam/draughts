@@ -35,7 +35,7 @@ impl Coordinate {
         x <= 7 && y <= 7
     }
 
-    /// produces an iterator of all possible jumps from the given coordinate
+    /// produces an iterator of all possible jumps from the calling coordinate
     pub fn jump_targets_from(&self) -> impl Iterator<Item = Coordinate> {
         let mut jumps = Vec::new();
         let Coordinate(x, y) = *self;
@@ -52,7 +52,7 @@ impl Coordinate {
         jumps.into_iter()
     }
 
-    /// produces an iterator of all possible moves from the given coordinate
+    /// produces an iterator of all possible moves from the calling coordinate
     pub fn move_targets_from(&self) -> impl Iterator<Item = Coordinate> {
         let mut moves = Vec::new();
         let Coordinate(x, y) = *self;
