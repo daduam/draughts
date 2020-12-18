@@ -1,0 +1,9 @@
+[package]
+name = "draughts"
+version = "0.1.0"
+authors = ["Kwadjo Ampadu <josephampadu549@gmail.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
