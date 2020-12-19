@@ -61,6 +61,19 @@ impl GameEngine {
         }
     }
 
+    pub fn get_piece(&self, coord: Coordinate) -> Result<Option<GamePiece>, ()> {
+        let Coordinate(x, y) = coord;
+        if x <= 7 && y <= 7 {
+            Ok(self.board[x][y])
+        } else {
+            Err(())
+        }
+    }
+
+    pub fn current_turn(&self) -> PieceColor {
+        self.current_turn
+    }
+
     fn valid_jump(&self, p: &GamePiece, from: &Coordinate, to: &Coordinate) -> bool {
         if !to.on_board() || !from.on_board() {
             false
@@ -123,7 +136,7 @@ impl GameEngine {
                 .filter(|t| self.valid_move(&p, &loc, &t))
                 .map(|ref t| Move {
                     from: loc.clone(),
-                    to: loc.clone(),
+                    to: t.clone(),
                 })
                 .collect::<Vec<Move>>();
             jumps.append(&mut moves);
